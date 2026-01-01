@@ -9,7 +9,7 @@ import { Footer } from './components/Footer';
 function App() {
   const location = useLocation()
   return (
-    <div className=' bg-slate-100'>
+    <div className=' bg-slate-100 min-h-screen flex flex-col'>
       <Header backButton={location.pathname.startsWith("/posts")} />
       <Routes>
         <Route path='/' element={<Home />} />

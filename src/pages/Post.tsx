@@ -17,17 +17,17 @@ const Post = () => {
             .finally(() => setIsLoading(false))
     }, [id])
 
-    if (isLoading) return <div className=" my-60 text-2xl font-semibold text-gray-600 animate-pulse text-center">Loading Post ...</div>
+    if (isLoading) return <div className=" flex-1 text-2xl font-semibold text-gray-600 animate-pulse text-center flex justify-center items-center">Loading Post ...</div>
 
-    if (error) return <div className=" my-60 text-red-500 text-2xl text-center">{error}</div>
+    if (error) return <div className=" flex-1 text-red-500 text-2xl text-center flex justify-center items-center">{error}</div>
 
     return (
-        <>
+        <div className=' flex-1'>
             <Hero subtitle={post?.title} />
             <div className=" mt-8 container">
                 {post?.body}
             </div>
-        </>
+        </div>
     )
 }
 

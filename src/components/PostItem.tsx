@@ -9,7 +9,7 @@ export const PostItem = ({ id, title, body }: PostType) => {
         <Card>
             <h2 className=' text-xl mb-2 truncate uppercase'>{title}</h2>
             <p className=' line-clamp-2'>{body}</p>
-            <Link to={`/posts/${id}`} className=' block mt-8'>
+            <Link to={`/posts/${id}`} className=' inline-block mt-8'>
                 <Button title='Read More' />
             </Link>
         </Card>

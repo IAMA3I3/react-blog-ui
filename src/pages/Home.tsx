@@ -11,12 +11,21 @@ const Home = () => {
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState("")
 
+    const [filteredPosts, setFilteredPosts] = useState<PostType[]>([])
+    const [searchText, setSearchText] = useState("")
+
     const [page, setPage] = useState(1)
     const limit = 12
 
     const totalPages = Math.ceil(posts.length / limit)
     const start = (page - 1) * limit
     const end = page * limit
+
+    const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchText(e.target.value)
+        const tempPost = searchText ? posts.filter(post => post.title.includes(searchText)) : posts
+        setFilteredPosts(tempPost)
+    }
 
 
     useEffect(() => {
@@ -31,8 +40,11 @@ const Home = () => {
     }, [])
 
     return (
-        <>
+        <div className=' flex-1'>
             <Hero title='POSTS' subtitle='Simple React Blog UI' />
+            <div className=" container mt-4 flex justify-end">
+                <input type="text" value={searchText} onChange={onInputChange} className=' py-2 px-4 w-96 border-2 border-slate-500 rounded-full focus:border-slate-700' placeholder='Search post' />
+            </div>
             <div className=" mt-8 container">
                 {
                     isLoading ?
@@ -59,7 +71,7 @@ const Home = () => {
                 <p className=" text-sm font-semibold text-gray-600 text-center">Showing {start + 1} to {Math.min(end, posts.length)} of {posts.length} posts</p>
                 <Button title='>' disabled={page === totalPages || totalPages === 0} onClick={() => setPage(prev => prev + 1)} />
             </div>
-        </>
+        </div>
     )
 }
 
