@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import Post from './pages/Post';
@@ -7,9 +7,10 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 
 function App() {
+  const location = useLocation()
   return (
     <div className=' bg-slate-100'>
-      <Header />
+      <Header backButton={location.pathname.startsWith("/posts")} />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/posts/:id' element={<Post />} />

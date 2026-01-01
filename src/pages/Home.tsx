@@ -56,7 +56,7 @@ const Home = () => {
             </div>
             <div className=" mt-4 container flex justify-end items-center gap-4">
                 <Button title='<' disabled={page === 1} onClick={() => setPage(prev => prev - 1)} />
-                <p className=" text-sm font-semibold text-gray-600">Showing {start + 1} to {Math.min(end, posts.length)} of {posts.length} posts</p>
+                <p className=" text-sm font-semibold text-gray-600 text-center">Showing {start + 1} to {Math.min(end, posts.length)} of {posts.length} posts</p>
                 <Button title='>' disabled={page === totalPages || totalPages === 0} onClick={() => setPage(prev => prev + 1)} />
             </div>
         </>
