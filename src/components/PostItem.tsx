@@ -7,9 +7,9 @@ import { Button } from './Button'
 export const PostItem = ({ id, title, body }: PostType) => {
     return (
         <Card>
-            <h2 className=' text-xl mb-2'>{title}</h2>
-            <p className=' line-clamp-4'>{body}</p>
-            <Link to={`/posts/${id}`} className=' mt-8'>
+            <h2 className=' text-xl mb-2 truncate uppercase'>{title}</h2>
+            <p className=' line-clamp-2'>{body}</p>
+            <Link to={`/posts/${id}`} className=' block mt-8'>
                 <Button title='Read More' />
             </Link>
         </Card>
